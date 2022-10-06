@@ -28,6 +28,7 @@
                 <ComboBox Name="TypeDisk" Text="{Binding ТипНакопителяДанных}" />
                 <TextBlock Text="Объем накопителя данных" />
                 <TextBox Text="{Binding ОбъемНакопителя}" />
+                <Button Content="Загрузить изображение" Click="ImgClick" />
 
                 <Button Content="Отправить" Click="SaveClick" />
             </StackPanel>

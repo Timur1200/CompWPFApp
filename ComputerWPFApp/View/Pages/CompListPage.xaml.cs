@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -24,11 +25,54 @@ namespace ComputerWPFApp.View.Pages
         public CompListPage()
         {
             InitializeComponent();
-        }
+            CBoxSearch.Items.Add("Поиск");
+            CBoxSearch.Items.Add("Производитель");
+            CBoxSearch.Items.Add("Тип накопителя");
 
+            CBoxSearch.SelectedIndex = 0;
+        }
+        List<Компьютер> _listAllComp;
+        
         private void PageLoaded(object sender, RoutedEventArgs e)
         {
-            LViewMat.ItemsSource = DatabaseComputerEntities.GetContext().Компьютер.ToList();
+            _listAllComp = DatabaseComputerEntities.GetContext().Компьютер.ToList(); 
+            LViewMat.ItemsSource = _listAllComp;
+        }
+
+
+        private void LViewMat_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        void Search()
+        {
+            if (TBoxSearch.Text.Length == 0)
+            {
+                LViewMat.ItemsSource = _listAllComp;
+                return;
+            }
+
+            if (CBoxSearch.SelectedIndex ==  0) LViewMat.ItemsSource = _listAllComp;
+            else if (CBoxSearch.SelectedIndex == 1)
+            {
+                var a = DatabaseComputerEntities.GetContext().Компьютер.Where(q=>q.Производители.Имя.ToLower().Contains(TBoxSearch.Text.ToLower())).ToList();
+                LViewMat.ItemsSource = a;
+            }
+            else if (CBoxSearch.SelectedIndex == 2)
+            {
+                var a = DatabaseComputerEntities.GetContext().Компьютер.Where(q => q.ТипНакопителяДанных.ToLower().Contains(TBoxSearch.Text.ToLower())).ToList();
+                LViewMat.ItemsSource = a;
+            }
+        }
+        private void TBoxSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Search();
+        }
+
+        private void CBoxSearch_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Search();
         }
     }
 }

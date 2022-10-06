@@ -9,7 +9,7 @@
         <EntityTypeShape EntityType="DatabaseComputerModel.Видеокарта" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
         <EntityTypeShape EntityType="DatabaseComputerModel.Производители" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
         <EntityTypeShape EntityType="DatabaseComputerModel.Процессор" Width="1.5" PointX="5.375" PointY="3.875" />
-        <EntityTypeShape EntityType="DatabaseComputerModel.Компьютер" Width="1.5" PointX="7.625" PointY="3.625" />
+        <EntityTypeShape EntityType="DatabaseComputerModel.Компьютер" Width="3.875" PointX="7.625" PointY="3.625" />
         <AssociationConnector Association="DatabaseComputerModel.FK_Компьютер_Видеокарта" />
         <AssociationConnector Association="DatabaseComputerModel.FK_Компьютер_Производители" />
         <AssociationConnector Association="DatabaseComputerModel.FK_Компьютер_Процессор" />
