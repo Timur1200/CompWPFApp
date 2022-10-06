@@ -21,6 +21,35 @@ namespace ComputerWPFApp.Model
 
     partial class Компьютер
     {
+        public string proc
+        {
+            get
+            {
+                return $"{Процессор.Модель} Ядер:{Процессор.КолвоЯдер} Частота:{Процессор.Частота} ГГц";
+            }
+        }
+        public string video
+        {
+            get
+            {
+                return $"{Видеокарта.Модель} {Видеокарта.ОбъемВидеопамяти} ГБ";
+            }
+        }
+        public string ram
+        {
+            get
+            {
+                return $"{ТипОперативнойПамяти} {ОбъемОперативнойПамяти} ГБ";
+            }
+        }
+        public string memory
+        {
+            get
+            {
+                return $"{ТипНакопителяДанных} {ОбъемНакопителя} ГБ";
+            }
+        }
+
         public BitmapSource Img
         {
             get
